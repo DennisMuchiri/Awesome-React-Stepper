@@ -13,6 +13,7 @@ const Stepper = (props: StepperProps) => {
     onContinue = () => {},
     onPrev = () => {},
     onSubmit = () => {},
+    onContinueValidationFunction = () => {return false},
     btnPos = 'space-between',
     barWidth = '',
     strokeColor = '#cdd3d8',
@@ -71,6 +72,12 @@ const Stepper = (props: StepperProps) => {
   const nextStep = () => {
     if (!active || active >= (children as React.ReactElement[]).length) {
       return;
+    }
+    if(onContinueValidationFunction!=null){
+      const isFormValid = onContinueValidationFunction()
+      if(!isFormValid){
+        return
+      }
     }
     progress(active);
     const newActive = active + 1;
