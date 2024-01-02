@@ -74,7 +74,7 @@ const Stepper = (props: StepperProps) => {
       return;
     }
     if(onContinueValidationFunction!=null){
-      const isFormValid = onContinueValidationFunction()
+      const isFormValid = onContinueValidationFunction(active)
       if(!isFormValid){
         return
       }
