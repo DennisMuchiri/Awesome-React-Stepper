@@ -44,7 +44,7 @@ var Stepper = function (props) {
             return;
         }
         if (onContinueValidationFunction != null) {
-            var isFormValid = onContinueValidationFunction();
+            var isFormValid = onContinueValidationFunction(active);
             if (!isFormValid) {
                 return;
             }
