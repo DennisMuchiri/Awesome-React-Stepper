@@ -8,7 +8,7 @@ export declare type StepperProps = {
   onContinue?: (step: number) => void;
   onPrev?: (step: number) => void;
   onSubmit?: (step: number) => void;
-  onContinueValidationFunction?: (step: number) => boolean;
+  onContinueValidationFunction?: (step: number) => Promise<boolean>;
   btnPos?:
     | 'center'
     | 'end'

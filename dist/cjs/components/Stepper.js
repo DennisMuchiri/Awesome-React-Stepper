@@ -4,7 +4,9 @@ var tslib_1 = require("tslib");
 var react_1 = tslib_1.__importStar(require("react"));
 require("../styles/stepper.css");
 var Stepper = function (props) {
-    var _a = props.children, children = _a === void 0 ? [] : _a, _b = props.showProgressBar, showProgressBar = _b === void 0 ? true : _b, _c = props.defaultActiveStep, defaultActiveStep = _c === void 0 ? 1 : _c, backBtn = props.backBtn, continueBtn = props.continueBtn, submitBtn = props.submitBtn, _d = props.onContinue, onContinue = _d === void 0 ? function () { } : _d, _e = props.onPrev, onPrev = _e === void 0 ? function () { } : _e, _f = props.onSubmit, onSubmit = _f === void 0 ? function () { } : _f, _g = props.onContinueValidationFunction, onContinueValidationFunction = _g === void 0 ? function () { return false; } : _g, _h = props.btnPos, btnPos = _h === void 0 ? 'space-between' : _h, _j = props.barWidth, barWidth = _j === void 0 ? '' : _j, _k = props.strokeColor, strokeColor = _k === void 0 ? '#cdd3d8' : _k, _l = props.fillStroke, fillStroke = _l === void 0 ? '#3a4047' : _l, _m = props.stroke, stroke = _m === void 0 ? 2 : _m, _o = props.activeColor, activeColor = _o === void 0 ? '#3A4047' : _o, _p = props.activeProgressBorder, activeProgressBorder = _p === void 0 ? '2px solid #f3f4f5' : _p, _q = props.progressBarClassName, progressBarClassName = _q === void 0 ? '' : _q, _r = props.contentBoxClassName, contentBoxClassName = _r === void 0 ? '' : _r, _s = props.allowClickControl, allowClickControl = _s === void 0 ? true : _s;
+    var _a = props.children, children = _a === void 0 ? [] : _a, _b = props.showProgressBar, showProgressBar = _b === void 0 ? true : _b, _c = props.defaultActiveStep, defaultActiveStep = _c === void 0 ? 1 : _c, backBtn = props.backBtn, continueBtn = props.continueBtn, submitBtn = props.submitBtn, _d = props.onContinue, onContinue = _d === void 0 ? function () { } : _d, _e = props.onPrev, onPrev = _e === void 0 ? function () { } : _e, _f = props.onSubmit, onSubmit = _f === void 0 ? function () { } : _f, _g = props.onContinueValidationFunction, onContinueValidationFunction = _g === void 0 ? function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () { return tslib_1.__generator(this, function (_a) {
+        return [2 /*return*/, false];
+    }); }); } : _g, _h = props.btnPos, btnPos = _h === void 0 ? 'space-between' : _h, _j = props.barWidth, barWidth = _j === void 0 ? '' : _j, _k = props.strokeColor, strokeColor = _k === void 0 ? '#cdd3d8' : _k, _l = props.fillStroke, fillStroke = _l === void 0 ? '#3a4047' : _l, _m = props.stroke, stroke = _m === void 0 ? 2 : _m, _o = props.activeColor, activeColor = _o === void 0 ? '#3A4047' : _o, _p = props.activeProgressBorder, activeProgressBorder = _p === void 0 ? '2px solid #f3f4f5' : _p, _q = props.progressBarClassName, progressBarClassName = _q === void 0 ? '' : _q, _r = props.contentBoxClassName, contentBoxClassName = _r === void 0 ? '' : _r, _s = props.allowClickControl, allowClickControl = _s === void 0 ? true : _s;
     var _t = (0, react_1.useState)(0), active = _t[0], setActive = _t[1];
     (0, react_1.useEffect)(function () {
         if (defaultActiveStep <= children.length &&
@@ -42,21 +44,31 @@ var Stepper = function (props) {
         setActive(newActive);
         onPrev(newActive);
     };
-    var nextStep = function () {
-        if (!active || active >= children.length) {
-            return;
-        }
-        if (onContinueValidationFunction != null) {
-            var isFormValid = onContinueValidationFunction(active);
-            if (!isFormValid) {
-                return;
+    var nextStep = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+        var isFormValid, newActive;
+        return tslib_1.__generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!active || active >= children.length) {
+                        return [2 /*return*/];
+                    }
+                    if (!(onContinueValidationFunction != null)) return [3 /*break*/, 2];
+                    return [4 /*yield*/, onContinueValidationFunction(active)];
+                case 1:
+                    isFormValid = _a.sent();
+                    if (!isFormValid) {
+                        return [2 /*return*/];
+                    }
+                    _a.label = 2;
+                case 2:
+                    progress(active);
+                    newActive = active + 1;
+                    setActive(newActive);
+                    onContinue(newActive);
+                    return [2 /*return*/];
             }
-        }
-        progress(active);
-        var newActive = active + 1;
-        setActive(newActive);
-        onContinue(newActive);
-    };
+        });
+    }); };
     var progressClick = function (ind) {
         if (!allowClickControl)
             return;

@@ -13,7 +13,7 @@ const Stepper = (props: StepperProps) => {
     onContinue = () => {},
     onPrev = () => {},
     onSubmit = () => {},
-    onContinueValidationFunction = () => {return false},
+    onContinueValidationFunction =  async () => {return false},
     btnPos = 'space-between',
     barWidth = '',
     strokeColor = '#cdd3d8',
@@ -69,12 +69,12 @@ const Stepper = (props: StepperProps) => {
     onPrev(newActive);
   };
 
-  const nextStep = () => {
+  const nextStep = async () => {
     if (!active || active >= (children as React.ReactElement[]).length) {
       return;
     }
     if(onContinueValidationFunction!=null){
-      const isFormValid = onContinueValidationFunction(active)
+      const isFormValid = await onContinueValidationFunction(active)
       if(!isFormValid){
         return
       }

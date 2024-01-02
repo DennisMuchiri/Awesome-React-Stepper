@@ -9,7 +9,7 @@ export declare type StepperProps = {
     onContinue?: (step: number) => void;
     onPrev?: (step: number) => void;
     onSubmit?: (step: number) => void;
-    onContinueValidationFunction?: (step: number) => boolean;
+    onContinueValidationFunction?: (step: number) => Promise<boolean>;
     btnPos?: 'center' | 'end' | 'flex-end' | 'flex-start' | 'inherit' | 'initial' | 'left' | 'normal' | 'revert' | 'right' | 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'stretch' | 'unset';
     barWidth?: string;
     strokeColor?: string;
